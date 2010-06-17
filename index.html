@@ -56,7 +56,7 @@
 				</pre>
 				
 				<h2>Logik</h2>
-				<p>Mit Hilfe von Logik lassen sich Bedinungen überprüfen. Solche Bedingungen können sein Abfragen sein: Ist A größer B? Anhand des Ergebnisses, welches entweder <i>wahr</i> oder <i>falsch</i> ist, lässt sich eine Aktion durchführen: Wenn A größer B ist, setze A gleich 5.</p>
+				<p>Mit Hilfe von Logik lassen sich Bedingungen überprüfen. Solche Bedingungen können sein Abfragen sein: Ist A größer B? Anhand des Ergebnisses, welches entweder <i>wahr</i> oder <i>falsch</i> ist, lässt sich eine Aktion durchführen: Wenn A größer B ist, setze A gleich 5.</p>
 				<pre name="code" class="py">
 				a = 3
 				b = 9
@@ -337,9 +337,134 @@
 				
                 <h2>Grafiken und Zeichnen</h2>
                 
+                <h3>Koordinaten</h3>
+                <p>In der Spieleprogrammierung werden Punktkoordinaten anders als in der Mathematik von der oberen linken Ecke des
+                Fensters aus gesehen. Die x-Achse führt nach rechts, die y-Achse nach unten.</p>
+                <img src="images/coordinates.png" alt="Koordinaten" />
+                               
+                <h3>Farben</h3>
+                <p>Um in pygame Formen oder Text zu zeichnen, muss man eine Farbe angeben. Dazu wird ein Tupel mit 3 Werten benötigt.
+                Diese Werte geben die Licht-Anteile an <b>Rot</b>, <b>Grün</b> und <b>Blau</b> in der Farbe an. Die Werte sind Ganzzahlen im
+                Bereich von <b>0</b> bis <b>255</b>.</p>                
+                <pre name="code" class="py">
+                # Ein paar Beispiele:
+                rot     = (255,0,0)         # Nur rotes Licht
+                weiss   = (255,255,255)     # So viel Licht wie möglich
+                gruen   = (0,128,0)         # Etwas grünes Licht (nicht zu viel, sonst wird es neon-grün)
+                blau    = (0,0,200)         # Nur blaues Licht
+                gelb    = (255,255,0)       # Rotes und grünes Licht zusammen ergeben Gelb
+                orange  = (255,255,128)     # Gelbes und etwas blaues Licht zusammen ergeben Orange
+                pink    = (255,0,255)       # Rotes und blaues Licht
+                schwarz = (0,0,0)           # Kein Licht = Schwarz... logisch oder?
+                </pre>
+                
+                <h3>Surfaces</h3>
+                <p>Surfaces sind so etwas wie Zeichenflächen. Ein Surface kann also bemalt werden, entweder mit einfachen Formen
+                oder mit Bildern aus Dateien. Man kann auch ein Surface manuell erstellen und vollständig mit einer Farbe füllen. 
+                Surfaces sind dabei immer rechteckig, können aber unsichtbare Pixel enthalten. Dadurch kann ein Surface auch z.B.
+                einen Kreis darstellen.</p>
+                <pre name="code" class="py">
+                    # Surface erstellen (100 Pixel breit, 50 Pixel hoch)
+                    flaeche = pygame.Surface((100,50))
+                    
+                    # die Fläche mit pinker Farbe ausfüllen
+                    flaeche.fill((255,0,255))
+                    
+                    # jetzt haben wir ein pinkes Rechteck der Größe 100 x 50 Pixel
+                </pre>
+                
+                <h3>Blit</h3>
+                <p>Auch das Spiel-Fenster an sich ist ein Surface. Will man darauf malen, erstellt man ein weiteres Surface, bemalt dieses
+                (z.B. mit einer Grafik aus einer Datei) und "stempelt" das Grafik-Surface auf das Fenster-Surface. Dieser Vorgang heißt
+                <b>"blit"</b>.</p>
+                
+                <pre name="code" class="py">
+                    # INITIALISIERUNG
+                    
+                    screen = pygame.display.set_mode((400,300)) # Spiel-Fenster erstellen
+                    flaeche = pygame.Surface((100,50))          # Surface erstellen
+                    flaeche.fill((160,0,0))                   # Surface füllen mit Dunkelrot
+                    
+                    # ...
+                    
+                    while running:
+                        # EREIGNIS-BEHANDLUNG
+                        # ...
+                        
+                        # BERECHNUNGEN
+                        # ...
+                        
+                        # ZEICHNEN
+                        screen.fill((0,0,0))            # das Alte Bild mit Schwarz übermalen
+                        screen.blit(flaeche, (20,40))   # die Fläche an Position (20,40) auf den
+                                                        # Screen (das Fenster) stempeln
+                        pygame.display.flip()           # Das gezeichnete Bild anzeigen
+                        
+                    # DEINITIALISIERUNG
+                    # ...
+                </pre>
+                <p>
+                    Die letzte Zeile <b>pygame.display.flip()</b> ist wichtig, da dadurch erst das auf <i>screen</i> gezeichnete Bild angezeigt
+                    wird. Vergisst man diese Zeile, bleibt der Bildschirm schwarz.
+                </p>
+                
+                <h3>Einfache Formen</h3>
+                <p>Einfache Formen lassen sich relativ einfach mit Hilfe von <i>pygame.draw</i> malen.</p>
+                <pre name="code" class="py">
+                    # Einen roten Kreis auf screen malen mit Mittelpunkt (100|200) und Radius 50 Pixel
+                    pygame.draw.circle(screen, (255,0,0) , (100,200), 50)
+                    
+                    # Ein grünes Rechteck auf screen malen mit oberer linker Ecke an Position (80|20),
+                    # 40 Pixel breit und 30 Pixel hoch.
+                    pygame.draw.rect(screen, (0,255,0), (80,20,40,30) )
+                    
+                    # Eine 5 Pixel breite blaue Linie zeichnen, von Position (300|20) nach (100|200)
+                    pygame.draw.line(screen, (0,0,255), (300,20), (100,200), 5)
+                </pre>
+                <p>Dieser Code erzeugt eine solche Ausgabe:</p>
+                <img src="images/pygame_draw.png" alt="pygame.draw Ausgabe" />
+                
+                
+                <h3>Bilder laden</h3>
+                <p>Dank Pygame ist es relativ einfach aus Bilddateien Grafiken in ein Surface zu laden.</p>
+                <pre name="code" class="py">
+                    bild = pygame.image.load("pfad/zur/datei.png")
+                    
+                    while running:
+                        # ...
+                        screen.blit(bild, (10,10))
+                        # ...
+                        
+                    # ...
+                </pre>
+                <p>Der Pfad zur Datei geht dabei entweder von der Script-Datei aus (z.B. "grafiken/figur.png") oder als absoluter Pfad 
+                von einem Wurzel-/ Laufwerksverzeichnis (z.B. "C:/ordner/unterordner/datei.png")</p>
+                
+                <h3>Textausgabe</h3>
+                <p>Die Textausgabe mit Pygame ist ein wenig komplizierter. Zuerst muss die Schriftart geladen werden. Dann muss ein Surface mit dem
+                gewünschten Text erstellt und dieses danach auf das Fenster gestempelt werden.</p>
+                <pre name="code" class="py">
+                    # Schriftart "Arial" laden, 12 pt groß, Fett (da True) aber nicht Kursiv (da False)
+                    schriftart = pygame.font.SysFont("Arial",12,True,False)
+                    
+                    while running:
+                        # ...
+                        
+                        # Text-Surface erstellen - Schriftfarbe weiß
+                        surf = schriftart.render("Ich wollte nur mal schnell Hallo sagen!", True, (255,255,255))
+                        
+                        # Textsurface auf Fenstersurface an Position (100|100) stempeln
+                        screen.blit(surf, (100,100))
+                        
+                        # ...
+                    
+                    # ...
+                    
+                </pre>
+
                 <a name="timing"></a>
                 <h2>Timing</h2>
-
+                
 
 
 
