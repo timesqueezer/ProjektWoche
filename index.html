@@ -3,6 +3,14 @@
 	<head>
 		<title>Deutsche Python und Pygame Referenz</title>
 		<link href="styles.css" rel="stylesheet" type="text/css" media="screen" />
+		<link type="text/css" rel="stylesheet" href="css/SyntaxHighlighter.css"></link>
+		<script language="javascript" src="js/shCore.js"></script>
+		<script language="javascript" src="js/shBrushCSharp.js"></script>
+		<script language="javascript" src="js/shBrushXml.js"></script>
+		<script language="javascript">
+		dp.SyntaxHighlighter.ClipboardSwf = '/flash/clipboard.swf';
+		dp.SyntaxHighlighter.HighlightAll('code');
+</script>
 	</head>
 	<body>
 		<div id="wrapper">
@@ -59,7 +67,7 @@
 				<p>Mit Hilfe von Pygame kann man in Python relativ einfach Spiele schreiben. Pygame hilft einem dabei,
 				Grafiken anzuzeigen.</p>				
 				<h2>Grundaufbau</h2>
-				<pre class="code">
+				<pre name="code" class="py">
 # Pygame muss importiert werden, um es zu nutzen</li>
 import pygame
 
@@ -101,7 +109,7 @@ pygame.quit()</pre>
 				<h1>Beispiele</h1>
 
 				<h2>Bounce</h2>
-				<pre class="code">lol = "rofl"
+				<pre class="python" name="code">lol = "rofl"
 print lol</pre>
 				<h2>Pong</h2>
 			</div>
