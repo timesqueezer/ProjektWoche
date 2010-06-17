@@ -4,13 +4,6 @@
 		<title>Deutsche Python und Pygame Referenz</title>
 		<link href="styles.css" rel="stylesheet" type="text/css" media="screen" />
 		<link type="text/css" rel="stylesheet" href="css/SyntaxHighlighter.css"></link>
-		<script language="javascript" src="js/shCore.js"></script>
-		<script language="javascript" src="js/shBrushCSharp.js"></script>
-		<script language="javascript" src="js/shBrushXml.js"></script>
-		<script language="javascript">
-		dp.SyntaxHighlighter.ClipboardSwf = '/flash/clipboard.swf';
-		dp.SyntaxHighlighter.HighlightAll('code');
-</script>
 	</head>
 	<body>
 		<div id="wrapper">
@@ -47,20 +40,55 @@
 				
 				<h2>Logik</h2>
 				<p></p>
-				<ul class="code">
-					<li>list1 = [5, 3]  # Erstellt eine List <i>list1</i> mit den Ganzzahlen 5 und 3.</li>
-					<li>print list1[0]  # Gibt 5 aus der List <i>list1</i> aus (0ter Eintrag).</li>
-					<li>list1.append(6) # Fügt die Ganzzahl 6 an das Ende der List <i>list1</i> an.</li>
-					<li>print list1     # Gibt aus: [5, 3, 6]</li>
-					<li>list1[1] = 61   # Überschreibt Wert der List <i>list1</i> an Stelle 1 mit der Ganzzahl 61.<li>
-					<li>print list1     # Gibt aus: [5, 61, 6]</li>
-					<li>list1.pop(1)    # Löscht Wert an Position 1 der List</li>
-					<li>print list1     # Gibt aus: [5, 6]</li>
-				</ul>
+				<pre name="code" class="py">
+					list1 = [5, 3]  # Erstellt eine List list1 mit den Ganzzahlen 5 und 3.
+					print list1[0]  # Gibt 5 aus der List list1 aus (0ter Eintrag).
+					list1.append(6) # Fügt die Ganzzahl 6 an das Ende der List list1 an.
+					print list1     # Gibt aus: [5, 3, 6]
+					list1[1] = 61   # Überschreibt Wert der List list1 an Stelle 1 mit der Ganzzahl 61.
+					print list1     # Gibt aus: [5, 61, 6]
+					list1.pop(1)    # Löscht Wert an Position 1 der List
+					print list1     # Gibt aus: [5, 6]
+				</pre>
 				
 
 				<h2>Schleifen</h2>
+				<pre name="code" class="py">
+					
+					while (Bedingung):
+						Tu dies
+						Tu das
+
+					a = 1
+					while (a < 10):	# Füre die folgenden Befehle aus, solange a kleiner als 10 ist
+						print a		# a ausgeben
+						a += 1		# a um 1 erhöhen
+									# Ausgabe wäre: 1 2 3 4 5 6 7 8 9 10 -> Dann wird die Schleife unterbrochen, da die Bedingung erfüllt ist
+
+					b = [1, 5, 6, 9]
+
+					for c in b:		# Durchläuft die Liste b; Bei jedem Durchlauf heißt das jeweilige Element c
+						print c		# c ausgeben
+									# Ausgabe wäre: 1 5 6 9 -> ganze Liste durchlaufen
+
+				</pre>
 				<h2>Funktionen</h2>
+				<pre name="code" class="py">
+
+					def addiere(a, b):
+						print (a + b)
+
+					i = 5
+					addiere(i, 7)		# Ausgabe wäre: 12
+
+					def addiere(a, b):
+						return (a + b)
+
+					i = addiere(2, 5)
+
+					print i				# Ausgabe wäre: 7
+
+				</pre>
 				<h2>Klassen</h2>
 
 				<h1>Pygame</h1>
@@ -114,5 +142,12 @@ print lol</pre>
 				<h2>Pong</h2>
 			</div>
 		</div>
+		<script language="javascript" src="js/shCore.js"></script>
+		<script language="javascript" src="js/shBrushPython.js"></script>
+		<script language="javascript" src="js/shBrushXml.js"></script>
+		<script language="javascript">
+			dp.SyntaxHighlighter.ClipboardSwf = '/flash/clipboard.swf';
+			dp.SyntaxHighlighter.HighlightAll('code');
+		</script>
 	</body>
 </html>
