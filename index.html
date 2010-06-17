@@ -461,12 +461,84 @@
                     # ...
                     
                 </pre>
-
+                
+                
+                <h2>Bewegungen</h2>
+                <p>Spannend werden Spiele erst, wenn sich Dinge bewegen. Hierzu muss man sich einfach die Koordinaten 
+                des Objektes in einer Variable merken und diese Variable in jedem Frame ein bisschen verändern. Das Surface 
+                wird dann an diese Stelle gestempelt. Da das Auge ab etwa 20 Frames pro Sekunde zu langsam ist um die einzelnen Bilder
+                zu sehen, erscheint das Objekt wie bewegt.</p>
+                
+                <pre name="code" class="py">
+                # ...
+                posX = 10
+                # ...
+                while running:
+                    # ...
+                    
+                    # BERECHNUNGEN
+                    posX = posX + 5
+                    
+                    # ZEICHNEN
+                    screen.blit(meinSurface, (posX, 20))
+                    
+                    #...
+                </pre>
+                
                 <a name="timing"></a>
                 <h2>Timing</h2>
+                <p>Bei der Spieleprogrammierung ist gutes Timing besonders wichtig. Es ist ungünstig, wenn ein Spiel, bei welchem es auf
+                gute Reaktionszeiten ankommt, auf einem hochwertigen Computer doppelt so schnell läuft wie auf einem anderen. Hierfür gibt
+                es zwei Möglichkeiten, die Geschwindigkeit zu steuern:</p>
                 
-
-
+                <h3>Framerate begrenzen</h3>
+                <p>
+                    Pygame bietet die Möglichkeit, relativ einfach die Framerate (FPS) auf einen gewünschten Wert zu begrenzen. Das bedeutet
+                    zwar, dass das Spiel auf einem viel zu alten und langsamen Computer zu langsam laufen kann, allerdings wird es nie zu schnell
+                    laufen, da einfach mit dem nächsten Frame gewartet wird.
+                </p>
+                
+                <pre name="code" class="py">
+                    # ...
+                    timer = pygame.time.Clock() # Uhr erstellen
+                    FPS = 60                    # Framerate merken in Variable "FPS"
+                    #...
+                    
+                    while running:
+                        # AM ANFANG DER SCHLEIFE!
+                        timer.tick(FPS)
+                        
+                        #... 
+                </pre>
+                
+                
+                <h3>Zeit als Faktor</h3>
+                <p>Die kompliziertere, aber auch bei langsamen Computern bessere Methode, ist die seit dem letzten Frame
+                verstrichene Zeit als Faktor zur Geschwindigkeit zu multiplizieren.</p>
+                
+                <pre name="code" class="py">
+                    # ...
+                    timer = pygame.time.Clock() # Uhr erstellen
+                    #...
+                    
+                    while running:
+                        # Die seit dem letzten Frame verstrichene Zeit merken
+                        timeDiff = timer.tick()      # die Zeit ist in Millisekunden (Tausendstel Sekunden) angegeben
+                        timeDiff = timeDiff * 1000.0 # die Zeit ist nun in Sekunden angegeben
+                        
+                        # BERECHNUNGEN
+                        
+                        posX = posX + ( 100 * timeDiff) # auf posX werden pro Sekunde 100 Pixel addiert
+                        # statt:
+                        # posX = posX + 100             # auf posX werden pro Frame 100 Pixel addiert
+                        
+                        
+                        #... 
+                </pre>
+                
+                <p>Der Unterschied ist hierbei, dass nicht pro Frame ein bestimmter Wert auf die Koordinate
+                addiert wird, sonder pro Sekunde. Dies ist nötig, da ein Frame nicht immer gleich lang ist. 
+                Eine Sekunde ist erfüllt diese Voraussetzung.</p>
 
 
 
