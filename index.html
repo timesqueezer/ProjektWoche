@@ -21,19 +21,19 @@
 					<li>mein_ergebnis = var1 + var2 # Speichert Summe von var1 und var2 in Variable <i>mein_ergebnis</i></li>
 				</ul>
 				
-				<h2>BehÃ¤lter</h2>
-				<p>Es gibt in Python drei Arten von BehÃ¤ltern: <i>Lists, Tuples und Dicts</i>. <i>Lists</i> sind
-				wie Einkaufslisten, auf die man nach Belieben EintrÃ¤ge hinzufÃ¼gen oder entfernen kann.
-				<i>Tuples</i> sind wie Lists, nur kÃ¶nnen sie nur einmalig erstellt, aber nicht verÃ¤ndert werden kÃ¶nnen.
-				<i>Dicts</i> sind etwas komplizierter. Sie ordnen einen Wert einem anderen zu wie in einem WÃ¶rterbuch.</p>
+				<h2>Behälter</h2>
+				<p>Es gibt in Python drei Arten von Behältern: <i>Lists, Tuples und Dicts</i>. <i>Lists</i> sind
+				wie Einkaufslisten, auf die man nach Belieben Einträge hinzufügen oder entfernen kann.
+				<i>Tuples</i> sind wie Lists, nur können sie nur einmalig erstellt, aber nicht verändert werden können.
+				<i>Dicts</i> sind etwas komplizierter. Sie ordnen einen Wert einem anderen zu wie in einem Wörterbuch.</p>
 				<ul class="code">
 					<li>list1 = [5, 3]  # Erstellt eine List <i>list1</i> mit den Ganzzahlen 5 und 3.</li>
 					<li>print list1[0]  # Gibt 5 aus der List <i>list1</i> aus (0ter Eintrag).</li>
-					<li>list1.append(6) # FÃ¼gt die Ganzzahl 6 an das Ende der List <i>list1</i> an.</li>
+					<li>list1.append(6) # Fügt die Ganzzahl 6 an das Ende der List <i>list1</i> an.</li>
 					<li>print list1     # Gibt aus: [5, 3, 6]</li>
-					<li>list1[1] = 61   # Ãœberschreibt Wert der List <i>list1</i> an Stelle 1 mit der Ganzzahl 61.<li>
+					<li>list1[1] = 61   # Überschreibt Wert der List <i>list1</i> an Stelle 1 mit der Ganzzahl 61.<li>
 					<li>print list1     # Gibt aus: [5, 61, 6]</li>
-					<li>list1.pop(1)    # LÃ¶scht Wert an Position 1 der List</li>
+					<li>list1.pop(1)    # Löscht Wert an Position 1 der List</li>
 					<li>print list1     # Gibt aus: [5, 6]</li>
 				</ul>
 				
@@ -42,11 +42,11 @@
 				<ul class="code">
 					<li>list1 = [5, 3]  # Erstellt eine List <i>list1</i> mit den Ganzzahlen 5 und 3.</li>
 					<li>print list1[0]  # Gibt 5 aus der List <i>list1</i> aus (0ter Eintrag).</li>
-					<li>list1.append(6) # FÃ¼gt die Ganzzahl 6 an das Ende der List <i>list1</i> an.</li>
+					<li>list1.append(6) # Fügt die Ganzzahl 6 an das Ende der List <i>list1</i> an.</li>
 					<li>print list1     # Gibt aus: [5, 3, 6]</li>
-					<li>list1[1] = 61   # Ãœberschreibt Wert der List <i>list1</i> an Stelle 1 mit der Ganzzahl 61.<li>
+					<li>list1[1] = 61   # Überschreibt Wert der List <i>list1</i> an Stelle 1 mit der Ganzzahl 61.<li>
 					<li>print list1     # Gibt aus: [5, 61, 6]</li>
-					<li>list1.pop(1)    # LÃ¶scht Wert an Position 1 der List</li>
+					<li>list1.pop(1)    # Löscht Wert an Position 1 der List</li>
 					<li>print list1     # Gibt aus: [5, 6]</li>
 				</ul>
 				
@@ -56,8 +56,45 @@
 				<h2>Klassen</h2>
 
 				<h1>Pygame</h1>
-
+				<p>Mit Hilfe von Pygame kann man in Python relativ einfach Spiele schreiben. Pygame hilft einem dabei,
+				Grafiken anzuzeigen.</p>				
 				<h2>Grundaufbau</h2>
+				<pre class="code">
+# Pygame muss importiert werden, um es zu nutzen</li>
+import pygame
+
+# Pygame initialisieren (starten)
+pygame.init()
+
+# Fenster erstellen, Größe: 600 x 400 px
+screen = pygame.display.set_mode((600,400))
+
+# Als Beispiel ein grünes Quadrat erstellen
+quadrat = pygame.Surface((20,20,))
+quadrat.fill((0,200,0))
+
+# in <i>running</i> wird gespeichert, ob das Programm läuft
+running = True
+
+# solange das Spiel läuft, wird diese Schleife ausgeführt:
+while running:
+    # Ereignisse abfangen
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:         # Wenn das Programm geschlossen wird:
+            running = False
+        if event.type == pygame.KEYDOWN:      # Wenn eine Taste gedrückt wird
+            if event.key == pygame.KESCAPE:   # Wenn die Taste "Escape" ist
+                running = False
+    
+    # Hier wird gezeichnet
+    screen.fill((0,0,0))             # Altes Bild mit schwarz übermalen
+    screen.blit(quadrat, (100,100))  # Das Beispiel-Quadrat zeichnen
+    
+    # Das gezeichnete Bild anzeigen
+    pygame.display.flip()
+
+# Das Programm beenden
+pygame.quit()</pre>
 				<h2>Ereignisse</h2>
 				<h2>Grafiken und Zeichnen</h2>
 

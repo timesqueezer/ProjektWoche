@@ -31,6 +31,6 @@ h2{
 	padding:3px 10px;
 	font-family:Courier New, monospaced;
 }
-li.code{
+ul.code{
     list-style:none;
 }
