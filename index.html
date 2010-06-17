@@ -88,18 +88,18 @@
 						print a	    # a ausgeben
 						a = a + 1   # a um 1 erhöhen
 									# Ausgabe wäre: 1 2 3 4 5 6 7 8 9 -> Dann wird die Schleife unterbrochen, 
-									# da die Bedingung erfüllt ist
+									# da die Bedingung (a < 10) nicht mehr erfüllt ist
 
-					b = [1, 5, 6, 9]
+					b = [1, 5, 4, 9]
 
 					for c in b:		# Durchläuft die Liste b; Bei jedem Durchlauf heißt das jeweilige Element c
 						print c		# c ausgeben
-									# Ausgabe wäre: 1 5 6 9 -> ganze Liste durchlaufen
+									# Ausgabe wäre: 1 5 4 9 -> ganze Liste durchlaufen
 
 				</pre>
                 <h2>Funktionen</h2>
 
-                Funktionen sind dazu da, Code, den man mehr als einmal braucht, einmal an eine Stelle im Programm zu schreiben. Sie können dann an einer anderen Stelle aufgerufen werden.
+                Funktionen sind dazu da um Code, den man mehr als einmal braucht, einmal an eine Stelle im Programm zu schreiben. Eine solche Funktion kann dann an einer anderen Stelle aufgerufen werden.
 
 				<pre name="code" class="py">
                     def print_lol():
@@ -113,6 +113,10 @@
                     print "lol"
                 
                 print_lol() # Ausgabe: lol
+                
+                # Tu irgendwas anderes
+                
+                print_lol() # Ausgabe: lol
                 </pre>
 
 				<img src="images/functions.png" alt="Funktionen"/>
@@ -122,37 +126,38 @@
                 Wenn jetzt in einer Funktion etwas Anderes getan werden soll als lol auszugeben, zum Beispiel eine Rechnung durchzufüren oder einen beliebigen Text auszugeben macht man dies so:
 
                 <pre name="code" class="py">
-				def addiere(a, b):
+				def addiereUndGibAus(a, b):
 					print (a + b)
 
 				i = 5
-				addiere(i, 7)		# Ausgabe wäre: 12
+				addiereUndGibAus(i, 7)		# Ausgabe: 12
+
+				# ---------------------------------------------------
 
 				def addiere(a, b):
 					return (a + b)
 
 				i = addiere(2, 5)
 
-				print i				# Ausgabe wäre: 7
+				print i						# Ausgabe: 7
                 </pre>
 
-                Die Variablen a und b sind NUR IN den Fuktionen vorhanden, außerhalb können sie nicht genutzt werden.
+                Die Variablen a und b sind <b>nur in den Fuktionen</b> vorhanden, außerhalb können sie nicht genutzt werden.
 
+                <a name="classes"></a>
 				<h2>Klassen</h2>
 				Klassen sind dazu da, ein Objekt zu definieren, welches bestimmte Eigenschaften hat und bestimmte Fähigkeiten hat.
                 Als Beispiel nehmen wir einen Mitarbeiter in einer Firma. Dieser Mitarbeiter hat einen Namen, ein Alter und ein Gehalt.
                 In Python sähe das dann so aus:
                 <pre name="code" class="py">
-				class Mitarbeiter:
-					m_Name, m_Gehalt, m_Alter
-					
+				class Mitarbeiter:					
 					def __init__(self, Name, Alter, Gehalt):
 						self.Gehalt = Gehalt
 						self.Name = Name
 						self.Alter = Alter
                 </pre>
                 Dies ist sozusagen die Definition, wie ein Mitarbeiter aufgebaut ist. Die __init__() Funktion wird aufgerufen, wenn ein Objekt
-                erstellt wird. Man spricht auch von Instanzieren des Objekts. Die Variablen in den Klammern werden der Funktion übergeben.
+                erstellt wird. Man spricht auch vom Instanzieren des Objekts. Die Variablen in den Klammern werden der Funktion übergeben.
                 Darunter wird jeweils eine Variable der entsprechenden Member-Variable übergeben. Member-Variablen gehören zum Objekt und sind
                 desssen Eigenschaften. Man schreibt Member-Variablen mit einem führenden "self.". Das "self" steht für das Objekt selbst.
                 <pre name="code" class="py">
@@ -162,13 +167,16 @@
 						self.Name = Name
 						self.Alter = Alter
 						
-					Tim = Mitarbeiter("Tim", 25, 1800)
-					
-					print "Tim verdient " +Tim.Gehalt + " Euro"
-					
-					print "Tim heißt" + Tim.Name
-					
-					print "Tim ist " + Tim.Alter + " Jahre alt"
+				Tim = Mitarbeiter("Tim Testmensch", 25, 1800)
+                
+				print "Tim verdient " +Tim.Gehalt + " Euro"
+				# Ausgabe: Tim verdient 1800 Euro
+                
+				print "Tim heißt" + Tim.Name
+				# Ausgabe: Tim heißt Tim Testmensch
+                                
+				print "Tim ist " + Tim.Alter + " Jahre alt"
+				# Ausgabe: Tim is 25 Jahre alt
                 </pre>
                 Tim kann auch bestimmte Sachen tun. Zum Beispiel kann er ein Jahr älter werden, oder mehr Gehalt bekommen.
                 Als erster Parameter der jeweiligen Funktion wird immer "self" übergeben, wie wir es schon in der "__init__()" Funktion gesehen haben.
@@ -178,13 +186,16 @@
 							self.Gehalt = Gehalt
 							self.Name = Name
 							self.Alter = Alter
+                            
 						def geburtstag(self):
-							self.Name += 1		# self.Name um 1 erhöhen (ein Jahr älter werden)
+							# self.Alter um 1 erhöhen (ein Jahr älter werden)
+							self.Alter += 1		    
 							
 						def neues_gehalt(self, Gehalt):
-							self.Gehalt = Gehalt # Altes Gehalt mit neuem Gehalt überschreiben
+							# Altes Gehalt mit neuem Gehalt überschreiben
+							self.Gehalt = Gehalt    
 					
-					Tim = Mitarbeiter("Tim", 25, 1800)
+					Tim = Mitarbeiter("Tim Testmensch", 25, 1800)
 					
 					print "Tim ist " + Tim.Alter + " Jahre alt"
 					# Ausgabe: Tim ist 25 Jahre alt
@@ -195,7 +206,8 @@
 					
 					Tim.neues_gehalt(2500)
 					
-					print "Tim bekommt jetzt " + Tim.Gehalt + " Euro :D" # Ausgabe: Tim bekommt jetzt 2500 Euro :D
+					print "Tim bekommt jetzt " + Tim.Gehalt + " Euro :D" 
+                    # Ausgabe: Tim bekommt jetzt 2500 Euro :D
 					
                 </pre>
                 
@@ -218,29 +230,36 @@
 				Tim.Beispiel(3)		# Ausgabe wäre: 5 3 ; Das außenstehende a wird gar nicht beachtet.
                 </pre>
 				<h1>Pygame</h1>
-				<p>Mit Hilfe von Pygame kann man in Python relativ einfach Spiele schreiben. Pygame hilft einem dabei,
-				Grafiken anzuzeigen.</p>				
+				<p>Mit Hilfe von Pygame kann man in Python relativ einfach Spiele 
+                schreiben. Pygame hilft einem zum Beispiel dabei, Grafiken anzuzeigen.</p>				
 				<h2>Grundaufbau</h2>
+                <p>Der Grundaufbau eines Programmes sieht immer gleich aus:</p>                
+                <img src="images/structure.png" alt="Grundaufbau" />
+                <p>In der <b>Initialisierung</b> wird das Programm gestartet, das Spielfenster erstellt und
+                eventuell ein paar <a href="#classes">Objekte</a> instanziert.</p>
+                <p>Die <b>Game-Loop</b> ist eine Endlosschleife, die immer wieder auf Benutzereingaben prüft (<b>Ereignis-Behandlung</b>),
+                <b>Berechnungen</b> wie z.B. Bewegungen von Objekten durchführt und danach eine Momentaufnahme des Spielfeldes <b>zeichnet</b>.
+                Eine solche Momentaufnahme heißt <b>Frame</b>. Einfache Spiele laufen oft bei 60 FPS (Frames pro Sekunde), das heißt die
+                Game-Loop wird 60 mal in einer Sekunde durchlaufen. Mehr dazu ist unter <a href="#timing">Timing</a> zu finden.</p>
+                <p>Zum Schluss erfolgt die <b>Deinitialisierung</b>, im Prinzip wird dabei nur das Fenster geschlossen.</p>
+                
 				<pre name="code" class="py">
 				# Pygame muss importiert werden, um es zu nutzen
 				import pygame
 
-				# Pygame initialisieren (starten)
-				pygame.init()
-
-				# Fenster erstellen, Größe: 600 x 400 px
-				screen = pygame.display.set_mode((600,400))
-
-				# Als Beispiel ein grünes Quadrat erstellen
-				quadrat = pygame.Surface((20,20))
+				# INITIALISIERUNG
+                
+				pygame.init()                                   # Pygame initialisieren (starten)
+				screen = pygame.display.set_mode((600,400))     # Fenster erstellen, Größe: 600 x 400 px
+                
+				quadrat = pygame.Surface((20,20))               # Als Beispiel ein grünes Quadrat erstellen
 				quadrat.fill((0,200,0))
+				running = True                                  # in running wird gespeichert, ob das Programm läuft
 
-				# in running wird gespeichert, ob das Programm läuft
-				running = True
-
-				# solange das Spiel läuft, wird diese Schleife ausgeführt:
+                # GAME LOOP
+                
 				while running:
-					# Ereignisse abfangen
+					# EREIGNIS-BEHANDLUNG
 					for event in pygame.event.get():
 						if event.type == pygame.QUIT:         # Wenn das Programm geschlossen wird:
 							running = False
@@ -248,7 +267,12 @@
 							if event.key == pygame.KESCAPE:   # Wenn die Taste "Escape" ist
 								running = False
 
-					# Hier wird gezeichnet
+                    # BERECHNUNGEN
+
+                    # Hier müsste gerechnet werden
+                    # dies ist in diesem Beispiel unnötig
+
+					# ZEICHNEN
 					screen.fill((0,0,0))             # Altes Bild mit schwarz übermalen
 					screen.blit(quadrat, (100,100))  # Das Beispiel-Quadrat zeichnen
 
@@ -259,11 +283,70 @@
 				pygame.quit()
 			</pre>
 				<h2>Ereignisse</h2>
+                <p>Damit der Spieler das Spiel auch steuern kann, müssen Eingaben des Benutzers
+                an das Programm weitergegeben werden. Für jede Art von Eingabe wird dabei
+                ein Ereignis <i>(engl. event)</i> erstellt. Dazu zählen Tastendrücke, Mausklicks oder
+                auch das Schließen des Spielfensters.</p>
+                <p>Bei jedem Schleifendurchlauf der Hauptschleife werden für die Ereignisbehandlung 
+                alle Ereignisse seit dem letzten Durchlauf von pygame abgefragt und nacheinander abgearbeitet.                
+                </p>
+                <p>Zuerst wird geprüft, um was für einen Ereignistyp es sich handelt (Tastendruck, Mausklick, etc.)
+                Danach können noch weitere Abfragen folgen, z.B. welche Taste gedrückt wurde...</p>
                 <pre name="code" class="py">
-                    # just a test
+                    # Ereignisliste abfragen
+                    event_list = pygame.event.get();
+                    
+                    # jedes Ereignis in einer Schleife abarbeiten:
+                    for event in event_list:
+                        # Den Ereignistyp herausfinden
+                        if event.type == pygame.QUIT:               # Fenster wurde geschlossen
+                            # ...
+                        if event.type == pygame.KEYDOWN:            # Taste wurde gedrückt
+                            # Die Taste abfragen
+                            if event.key == pygame.K_a:
+                                # Die Taste "A" wurde gedrückt
+                                # ...
+                            elif event.key == pygame.K_ESCAPE:
+                                # Die Taste "Esc" wurde gedrückt
+                                # ...
+                        if event.type == pygame.MOUSEBUTTONDOWN:    # Maus wurde geklickt
+                            # Mausposition ausgeben
+                            print event.pos
                 </pre>
+                
+                <p>Folgende Werte kann <u>event.type</u> annehmen:</p>
+                <ul>
+                    <li><b>Programm geschlossen:</b> QUIT</li>
+                    <li><b>Tastendruck:</b> KEYDOWN</li>
+                    <li><b>Taste loslassen:</b> KEYUP</li>
+                    <li><b>Maus bewegen:</b> MOUSEMOTION</li>
+                    <li><b>Mausklick:</b> MOUSEBUTTONDOWN</li>
+                    <li><b>Mausloslassen:</b> MOUSEBUTTONUP</li>
+                </ul>
+                
+                
+                <p>Folgende Werte kann <u>event.key</u> annehmen:</p>
+                <ul>
+                    <li><b>Buchstaben:</b> K_a, K_b, ..., K_z</li>
+                    <li><b>Zahlen:</b> K_0, K_1, ..., K_9</li>
+                    <li><b>Zahlen am Ziffernblock:</b> K_KP0, K_KP1, ..., K_KP9</li>
+                    <li><b>Funktionstasten:</b> K_F1, K_F2, ..., K_F12</li>
+                    <li><b>Pfeiltasten:</b>  K_LEFT, K_UP, K_RIGHT, K_DOWN</li>
+                    <li><b>Sonstige:</b> K_ESCAPE, K_ENTER, K_SPACE (Leerzeichen)</li>
+                </ul>
 				
                 <h2>Grafiken und Zeichnen</h2>
+                
+                <a name="timing"></a>
+                <h2>Timing</h2>
+
+
+
+
+
+
+
+
 
 				<h1>Beispiele</h1>
 

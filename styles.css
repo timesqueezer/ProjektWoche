@@ -2,23 +2,34 @@ body{
 	font-family:Helvetica, Arial;
 	font-size:9pt;
 	background:#CCC;
+    text-align:justify;
+}
+a{
+    color:#00F;
+    text-decoration:none;
+}
+a:hover{
+    text-decoration:underline;
 }
 #wrapper{
 	width:800px;
-	margin: auto;
+	margin: 20px auto;
 	background:#FFF;
 	padding:10px;
 	border:1px solid #888;
 	border-radius:12px;
+    -webkit-box-shadow:3px 3px 1px #AAA;
 }
 #header{
 	background:#EEE;
 	border:1px solid #CCC;
 	text-align:center;
 	border-radius:5px;
+    -webkit-box-shadow:3px 3px 1px #DDD;
 }
 #header h1{
-	
+	text-shadow:1px 1px 0px #FFF;
+    color:#666;
 }
 h2{
 	color:#666;
