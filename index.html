@@ -96,6 +96,9 @@
 
                 <pre name="code" class="py">
 
+                def print_lol():
+                    print "lol"
+                
                 print_lol() # Ausgabe: lol
 
                 </pre>
@@ -124,7 +127,87 @@
                 Die Variablen a und b sind NUR IN den Fuktionen vorhanden, außerhalb können sie nicht genutzt werden.
 
 				<h2>Klassen</h2>
+				Klassen sind dazu da, ein Objekt zu definieren, welches bestimmte Eigenschaften hat und bestimmte Fähigkeiten hat.
+                Als Beispiel nehmen wir einen Mitarbeiter in einer Firma. Dieser Mitarbeiter hat einen Namen, ein Alter und ein Gehalt.
+                In Python sähe das dann so aus:
+                <pre name="code" class="py">
+					class Mitarbeiter:
+						m_Name, m_Gehalt, m_Alter
+						
+						def __init__(self, Name, Alter, Gehalt):
+							m_Gehalt = Gehalt
+							m_Name = Name
+							m_Alter = Alter
+                </pre>
+                Dies ist sozusagen die Definition, wie ein Mitarbeiter aufgebaut ist. Die __init__() Funktion wird aufgerufen, wenn ein Objekt
+                erstellt wird. Man spricht auch von Instanzieren des Objekts. Die Variablen in den Klammern werden der Funktion übergeben.
+                Darunter wird jeweils eine Variable der entsprechenden Member-Variable übergeben. Member-Variablen gehören zum Objekt und sind
+                desssen Eigenschaften. Man schreibt Member-Variablen mit einem führenden "self.". Das "self" steht für das Objekt selbst.
+                <pre name="code" class="py">
+					class Mitarbeiter:		
+						def __init__(self, Name, Alter, Gehalt):
+							self.Gehalt = Gehalt
+							self.Name = Name
+							self.Alter = Alter
+							
+						Tim = Mitarbeiter("Tim", 25, 1800)
+						
+						print "Tim verdient " +Tim.Gehalt + " Euro"
+						
+						print "Tim heißt" + Tim.Name
+						
+						print "Tim ist " + Tim.Alter + " Jahre alt"
+					
+                </pre>
+                Tim kann auch bestimmte Sachen tun. Zum Beispiel kann er ein Jahr älter werden, oder mehr Gehalt bekommen.
+                Als erster Parameter der jeweiligen Funktion wird immer "self" übergeben, wie wir es schon in der "__init__()" Funktion gesehen haben.
+                <pre name="code" class="py">
+					class Mitarbeiter:		
+						def __init__(self, Name, Alter, Gehalt):
+							self.Gehalt = Gehalt
+							self.Name = Name
+							self.Alter = Alter
+						def geburtstag(self):
+							self.Name += 1		# self.Name um 1 erhöhen (ein Jahr älter werden)
+							
+						def neues_gehalt(self, Gehalt):
+							self.Gehalt = Gehalt # Altes Gehalt mit neuem Gehalt überschreiben
+					
+					Tim = Mitarbeiter("Tim", 25, 1800)
+					
+					print "Tim ist " + Tim.Alter + " Jahre alt"
+					# Ausgabe: Tim ist 25 Jahre alt
+					
+					Tim.geburtstag()
+					print "Oh, Tim hat heute Geburtstag!! Er ist jetzt " + Tim.Alter + " Jahre alt :D"
+					# Ausgabe: Oh, Tim hat heute Geburtstag!! Er ist jetzt 26 Jahre alt :D
+					
+					Tim.neues_gehalt(2500)
+					
+					print "Tim bekommt jetzt " + Tim.Gehalt + " Euro :D" # Ausgabe: Tim bekommt jetzt 2500 Euro :D
+					
+                </pre>
                 
+                Die Funktionen, auch Methoden genannt, funktionieren im Objekt wie ganz normale Funktionen. Sie können aber auf die Elemente
+                des Objekts mittels self zugreifen. Allerdings haben sie keine Zugriff auf Variablen, die außerhalb definiert wurden.
+                Das Gleiche gilt für ganz normale Funktionen. So können auch Namen doppelt verwendet werden, was aber nicht sehr klug ist,
+                 weil mann dann sehr leicht durcheinander kommt. Ein Beispiel
+                
+                <pre name="code" class="py">
+                
+					class Mitarbeiter:
+						def __init__(self, a):
+							self.a = Name
+						def Beispiel(self, a):
+							print self.a
+							print a
+					Tim = Mitarbeiter(5)
+					
+					a = 1				# eine weitere Variable mit dem Namen a
+					
+					Tim.Beispiel(3)		# Ausgabe wäre: 5 3 ; Das außenstehende a wird gar nicht beachtet.
+					
+                </pre>
 				<h1>Pygame</h1>
 				<p>Mit Hilfe von Pygame kann man in Python relativ einfach Spiele schreiben. Pygame hilft einem dabei,
 				Grafiken anzuzeigen.</p>				
