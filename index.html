@@ -1,5 +1,4 @@
-
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>Deutsche Python und Pygame Referenz</title>
 		<link href="styles.css" rel="stylesheet" type="text/css" media="screen" />
@@ -25,6 +24,7 @@
 					mein_ergebnis = var1 + var2 # Speichert Summe von var1 und var2 in Variable mein_ergebnis
 				</pre>
 				<p>Die vier Hauptdatentypen in Python sind: Ganzzahlen, Kommazahlen, Strings und Wahrheitswerte. Alle modernen Spiele und Anwendungen funktionieren prinzipiell auf Basis dieser Datentypen.</p>
+				<img src="images/variables.png" alt="Variablen"/>
 				
 				<h2>Behälter</h2>
 				<p>Es gibt in Python drei Arten von Behältern: Lists, Tuples und Dicts. Lists sind
@@ -40,6 +40,17 @@
 				print list1     # Gibt aus: [5, 61, 6]
 				list1.pop(1)    # Löscht Wert an Position 1 der List
 				print list1     # Gibt aus: [5, 6]
+				</pre>
+
+				<h2>Kommentare</h2>
+				<p>Besonders wichtig beim Programmieren ist das Verständnis für den Programmcode. Hierbei gibt es die Möglichkeit, seinen Code mittels sogenannter <b>Kommentare</b> zu dokumentieren. Dies ist in Python über die Raute # möglich. Genau dieses wurde übrigens oben schon überall im Code verwendet, um die Ausgaben direkt in den Code zu schreiben.</p>
+				<p>Kommentare werden nicht ausgeführt. Alles was hinter der Raute steht, ist dem Programm vollkommen egal, dem Programmierer aber nicht. Durch Kommentare wird das Programm sehr viel einfacher verständlich.</p>
+				<pre name="code" class="py">
+				zahl1 = 5
+				zahl2 = 10
+				# Überprüfe, ob zahl1 größer zahl2
+				if zahl1 > zahl2:
+					print "ist größer"
 				</pre>
 				
 				<h2>Logik</h2>
@@ -87,7 +98,6 @@
                 Funktionen sind dazu da, Code, den man mehr als einmal braucht, einmal an eine Stelle im Programm zu schreiben. Sie können dann an einer anderen Stelle aufgerufen werden.
 
 				<pre name="code" class="py">
-
                     def print_lol():
                         print "lol"
                 </pre>
@@ -95,35 +105,31 @@
                 Damit man nun nicht überall im Programm 'print "lol"' schreiben muss, ruft man die Funktion einfach mit print_lol() auf.
 
                 <pre name="code" class="py">
-
                 def print_lol():
                     print "lol"
                 
                 print_lol() # Ausgabe: lol
-
                 </pre>
-                
-                <img src="images/functions.png" alt="Funktionen" />
+
+				<img src="images/functions.png" alt="Funktionen"/>
 
                 <h3>Parameter</h3>
 
                 Wenn jetzt in einer Funktion etwas Anderes getan werden soll als lol auszugeben, zum Beispiel eine Rechnung durchzufüren oder einen beliebigen Text auszugeben macht man dies so:
 
                 <pre name="code" class="py">
+				def addiere(a, b):
+					print (a + b)
 
-					def addiere(a, b):
-						print (a + b)
+				i = 5
+				addiere(i, 7)		# Ausgabe wäre: 12
 
-					i = 5
-					addiere(i, 7)		# Ausgabe wäre: 12
+				def addiere(a, b):
+					return (a + b)
 
-					def addiere(a, b):
-						return (a + b)
+				i = addiere(2, 5)
 
-					i = addiere(2, 5)
-
-					print i				# Ausgabe wäre: 7
-
+				print i				# Ausgabe wäre: 7
                 </pre>
 
                 Die Variablen a und b sind NUR IN den Fuktionen vorhanden, außerhalb können sie nicht genutzt werden.
@@ -133,33 +139,32 @@
                 Als Beispiel nehmen wir einen Mitarbeiter in einer Firma. Dieser Mitarbeiter hat einen Namen, ein Alter und ein Gehalt.
                 In Python sähe das dann so aus:
                 <pre name="code" class="py">
-					class Mitarbeiter:
-						m_Name, m_Gehalt, m_Alter
-						
-						def __init__(self, Name, Alter, Gehalt):
-							self.Gehalt = Gehalt
-							self.Name = Name
-							self.Alter = Alter
+				class Mitarbeiter:
+					m_Name, m_Gehalt, m_Alter
+					
+					def __init__(self, Name, Alter, Gehalt):
+						self.Gehalt = Gehalt
+						self.Name = Name
+						self.Alter = Alter
                 </pre>
                 Dies ist sozusagen die Definition, wie ein Mitarbeiter aufgebaut ist. Die __init__() Funktion wird aufgerufen, wenn ein Objekt
                 erstellt wird. Man spricht auch von Instanzieren des Objekts. Die Variablen in den Klammern werden der Funktion übergeben.
                 Darunter wird jeweils eine Variable der entsprechenden Member-Variable übergeben. Member-Variablen gehören zum Objekt und sind
                 desssen Eigenschaften. Man schreibt Member-Variablen mit einem führenden "self.". Das "self" steht für das Objekt selbst.
                 <pre name="code" class="py">
-					class Mitarbeiter:		
-						def __init__(self, Name, Alter, Gehalt):
-							self.Gehalt = Gehalt
-							self.Name = Name
-							self.Alter = Alter
-							
-						Tim = Mitarbeiter("Tim", 25, 1800)
+				class Mitarbeiter:		
+					def __init__(self, Name, Alter, Gehalt):
+						self.Gehalt = Gehalt
+						self.Name = Name
+						self.Alter = Alter
 						
-						print "Tim verdient " +Tim.Gehalt + " Euro"
-						
-						print "Tim heißt" + Tim.Name
-						
-						print "Tim ist " + Tim.Alter + " Jahre alt"
+					Tim = Mitarbeiter("Tim", 25, 1800)
 					
+					print "Tim verdient " +Tim.Gehalt + " Euro"
+					
+					print "Tim heißt" + Tim.Name
+					
+					print "Tim ist " + Tim.Alter + " Jahre alt"
                 </pre>
                 Tim kann auch bestimmte Sachen tun. Zum Beispiel kann er ein Jahr älter werden, oder mehr Gehalt bekommen.
                 Als erster Parameter der jeweiligen Funktion wird immer "self" übergeben, wie wir es schon in der "__init__()" Funktion gesehen haben.
@@ -196,60 +201,59 @@
                  weil mann dann sehr leicht durcheinander kommt. Ein Beispiel
                 
                 <pre name="code" class="py">
-                
-					class Mitarbeiter:
-						def __init__(self, a):
-							self.a = Name
-						def Beispiel(self, a):
-							print self.a
-							print a
-					Tim = Mitarbeiter(5)
-					
-					a = 1				# eine weitere Variable mit dem Namen a
-					
-					Tim.Beispiel(3)		# Ausgabe wäre: 5 3 ; Das außenstehende a wird gar nicht beachtet.
-					
+				class Mitarbeiter:
+					def __init__(self, a):
+						self.a = Name
+					def Beispiel(self, a):
+						print self.a
+						print a
+				Tim = Mitarbeiter(5)
+				
+				a = 1				# eine weitere Variable mit dem Namen a
+				
+				Tim.Beispiel(3)		# Ausgabe wäre: 5 3 ; Das außenstehende a wird gar nicht beachtet.
                 </pre>
 				<h1>Pygame</h1>
 				<p>Mit Hilfe von Pygame kann man in Python relativ einfach Spiele schreiben. Pygame hilft einem dabei,
 				Grafiken anzuzeigen.</p>				
 				<h2>Grundaufbau</h2>
 				<pre name="code" class="py">
-# Pygame muss importiert werden, um es zu nutzen</li>
-import pygame
+				# Pygame muss importiert werden, um es zu nutzen
+				import pygame
 
-# Pygame initialisieren (starten)
-pygame.init()
+				# Pygame initialisieren (starten)
+				pygame.init()
 
-# Fenster erstellen, Größe: 600 x 400 px
-screen = pygame.display.set_mode((600,400))
+				# Fenster erstellen, Größe: 600 x 400 px
+				screen = pygame.display.set_mode((600,400))
 
-# Als Beispiel ein grünes Quadrat erstellen
-quadrat = pygame.Surface((20,20))
-quadrat.fill((0,200,0))
+				# Als Beispiel ein grünes Quadrat erstellen
+				quadrat = pygame.Surface((20,20))
+				quadrat.fill((0,200,0))
 
-# in <i>running</i> wird gespeichert, ob das Programm läuft
-running = True
+				# in running wird gespeichert, ob das Programm läuft
+				running = True
 
-# solange das Spiel läuft, wird diese Schleife ausgeführt:
-while running:
-    # Ereignisse abfangen
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:         # Wenn das Programm geschlossen wird:
-            running = False
-        if event.type == pygame.KEYDOWN:      # Wenn eine Taste gedrückt wird
-            if event.key == pygame.KESCAPE:   # Wenn die Taste "Escape" ist
-                running = False
-    
-    # Hier wird gezeichnet
-    screen.fill((0,0,0))             # Altes Bild mit schwarz übermalen
-    screen.blit(quadrat, (100,100))  # Das Beispiel-Quadrat zeichnen
-    
-    # Das gezeichnete Bild anzeigen
-    pygame.display.flip()
+				# solange das Spiel läuft, wird diese Schleife ausgeführt:
+				while running:
+					# Ereignisse abfangen
+					for event in pygame.event.get():
+						if event.type == pygame.QUIT:         # Wenn das Programm geschlossen wird:
+							running = False
+						if event.type == pygame.KEYDOWN:      # Wenn eine Taste gedrückt wird
+							if event.key == pygame.KESCAPE:   # Wenn die Taste "Escape" ist
+								running = False
 
-# Das Programm beenden
-pygame.quit()</pre>
+					# Hier wird gezeichnet
+					screen.fill((0,0,0))             # Altes Bild mit schwarz übermalen
+					screen.blit(quadrat, (100,100))  # Das Beispiel-Quadrat zeichnen
+
+					# Das gezeichnete Bild anzeigen
+					pygame.display.flip()
+
+				# Das Programm beenden
+				pygame.quit()
+			</pre>
 				<h2>Ereignisse</h2>
 				<h2>Grafiken und Zeichnen</h2>
 
