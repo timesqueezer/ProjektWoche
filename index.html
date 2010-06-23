@@ -135,9 +135,9 @@
 						m_Name, m_Gehalt, m_Alter
 						
 						def __init__(self, Name, Alter, Gehalt):
-							m_Gehalt = Gehalt
-							m_Name = Name
-							m_Alter = Alter
+							self.Gehalt = Gehalt
+							self.Name = Name
+							self.Alter = Alter
                 </pre>
                 Dies ist sozusagen die Definition, wie ein Mitarbeiter aufgebaut ist. Die __init__() Funktion wird aufgerufen, wenn ein Objekt
                 erstellt wird. Man spricht auch von Instanzieren des Objekts. Die Variablen in den Klammern werden der Funktion übergeben.
