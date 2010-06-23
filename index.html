@@ -15,55 +15,63 @@
 
 				<h2>Variablen</h2>
 				<p>In Variablen kann man Werte speichern.</p>
-				<ul class="code">
-					<li>var1 = 10      # Speichert Ganzzahl 10 in Variable <i>var1</i></li>
-					<li>var2 = 5.5     # Speichert Kommazahl 5.5 in Variable <i>var2</i></li>
-					<li>var3 = "hallo" # Speichert String "hallo" in Variable <i>var3</i></li>
-					<li>mein_ergebnis = var1 + var2 # Speichert Summe von var1 und var2 in Variable <i>mein_ergebnis</i></li>
-				</ul>
+				<pre name="code" class="py">
+					var1 = 10      # Speichert Ganzzahl 10 in Variable var1
+					var2 = 5.5     # Speichert Kommazahl 5.5 in Variable var2
+					var3 = "hallo" # Speichert String "hallo" in Variable var3
+					var4 = True	   # Speichert Wahrheitswert True in Variable var4
+					mein_ergebnis = var1 + var2 # Speichert Summe von var1 und var2 in Variable mein_ergebnis
+				</pre>
+				<p>Die vier Hauptdatentypen in Python sind: Ganzzahlen, Kommazahlen, Strings und Wahrheitswerte. Alle modernen Spiele und Anwendungen funktionieren prinzipiell auf Basis dieser Datentypen.</p>
 				
 				<h2>Behälter</h2>
-				<p>Es gibt in Python drei Arten von Behältern: <i>Lists, Tuples und Dicts</i>. <i>Lists</i> sind
+				<p>Es gibt in Python drei Arten von Behältern: Lists, Tuples und Dicts. Lists sind
 				wie Einkaufslisten, auf die man nach Belieben Einträge hinzufügen oder entfernen kann.
 				<i>Tuples</i> sind wie Lists, nur können sie nur einmalig erstellt, aber nicht verändert werden können.
 				<i>Dicts</i> sind etwas komplizierter. Sie ordnen einen Wert einem anderen zu wie in einem Wörterbuch.</p>
-				<ul class="code">
-					<li>list1 = [5, 3]  # Erstellt eine List <i>list1</i> mit den Ganzzahlen 5 und 3.</li>
-					<li>print list1[0]  # Gibt 5 aus der List <i>list1</i> aus (0ter Eintrag).</li>
-					<li>list1.append(6) # Fügt die Ganzzahl 6 an das Ende der List <i>list1</i> an.</li>
-					<li>print list1     # Gibt aus: [5, 3, 6]</li>
-					<li>list1[1] = 61   # Überschreibt Wert der List <i>list1</i> an Stelle 1 mit der Ganzzahl 61.<li>
-					<li>print list1     # Gibt aus: [5, 61, 6]</li>
-					<li>list1.pop(1)    # Löscht Wert an Position 1 der List</li>
-					<li>print list1     # Gibt aus: [5, 6]</li>
-				</ul>
-				
-				<h2>Logik</h2>
-				<p></p>
 				<pre name="code" class="py">
-					list1 = [5, 3]  # Erstellt eine List list1 mit den Ganzzahlen 5 und 3.
-					print list1[0]  # Gibt 5 aus der List list1 aus (0ter Eintrag).
-					list1.append(6) # Fügt die Ganzzahl 6 an das Ende der List list1 an.
-					print list1     # Gibt aus: [5, 3, 6]
-					list1[1] = 61   # Überschreibt Wert der List list1 an Stelle 1 mit der Ganzzahl 61.
-					print list1     # Gibt aus: [5, 61, 6]
-					list1.pop(1)    # Löscht Wert an Position 1 der List
-					print list1     # Gibt aus: [5, 6]
+				list1 = [5, 3]  # Erstellt eine List list1 mit den Ganzzahlen 5 und 3.
+				print list1[0]  # Gibt 5 aus der List list1 aus (0ter Eintrag).
+				list1.append(6) # Fügt die Ganzzahl 6 an das Ende der List list1 an.
+				print list1     # Gibt aus: [5, 3, 6]
+				list1[1] = 61   # Überschreibt Wert der List list1 an Stelle 1 mit der Ganzzahl 61.
+				print list1     # Gibt aus: [5, 61, 6]
+				list1.pop(1)    # Löscht Wert an Position 1 der List
+				print list1     # Gibt aus: [5, 6]
 				</pre>
 				
-
-				<h2>Schleifen</h2>
+				<h2>Logik</h2>
+				<p>Mit Hilfe von Logik lassen sich Bedinungen überprüfen. Solche Bedingungen können sein Abfragen sein: Ist A größer B? Anhand des Ergebnisses, welches entweder <i>wahr</i> oder <i>falsch</i> ist, lässt sich eine Aktion durchführen: Wenn A größer B ist, setze A gleich 5.</p>
 				<pre name="code" class="py">
-					
-					while (Bedingung):
+				a = 3
+				b = 9
+				print a > b     # Ausgabe ist: False
+				if a != b:      # Wenn a ungleich b, dann...
+					print "ist ungleich!"
+				</pre>
+				<p>Logik lässt sich mit den folgenden Operatoren durchführen: < (kleiner als), > (größer als), == (gleich), != (ungleich), <= (kleiner gleich), >= (größer gleich). Weiterhin gibt es die Möglichkeit, logische Ausdrücke zu verknüpfen.</p>
+				<pre name="code" class="py">
+				c = 9
+				d = 3
+				e = 10
+				if c > d and e > d:	   # Wenn c größer d ist und gleichzeitig e größer d ist dann...
+					print "beides ist größer als d!"
+				</pre>
+				<p>Mit den folgenden Schlüsselworten lassen sich logische Ausdrücke verknüpfen: <b>and</b> (beide Bedingungen müssen wahr sein), <b>or</b> (eine der Bedingungen muss wahr sein</b>, <b>not</b> (kehrt den Wahrheitswert eines Ausdruckes um).</p>
+				
+				<h2>Schleifen</h2>
+				<p>Sogenannte Schleifen dienen dazu, den Verlauf eines Programmes so zu verändern, dass ein Befehl mehrere Male hintereinander mit anderen Daten ausgeführt werden kann.
+				<pre name="code" class="py">	
+					while Bedingung:
 						Tu dies
 						Tu das
 
 					a = 1
-					while (a < 10):	# Füre die folgenden Befehle aus, solange a kleiner als 10 ist
-						print a		# a ausgeben
-						a += 1		# a um 1 erhöhen
-									# Ausgabe wäre: 1 2 3 4 5 6 7 8 9 10 -> Dann wird die Schleife unterbrochen, da die Bedingung erfüllt ist
+					while a < 10:   # Führe die folgenden Befehle aus, solange a kleiner als 10 ist
+						print a	    # a ausgeben
+						a = a + 1   # a um 1 erhöhen
+									# Ausgabe wäre: 1 2 3 4 5 6 7 8 9 -> Dann wird die Schleife unterbrochen, 
+									# da die Bedingung erfüllt ist
 
 					b = [1, 5, 6, 9]
 
