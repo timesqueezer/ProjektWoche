@@ -23,6 +23,7 @@
 					var3 = "hallo" # Speichert String "hallo" in Variable var3
 					var4 = True	   # Speichert Wahrheitswert True in Variable var4
 					mein_ergebnis = var1 + var2 # Speichert Summe von var1 und var2 in Variable mein_ergebnis
+					
 				</pre>
 				<p>Die vier Hauptdatentypen in Python sind: Ganzzahlen, Kommazahlen, Strings und Wahrheitswerte. Alle modernen Spiele und Anwendungen funktionieren prinzipiell auf Basis dieser Datentypen.</p>
 				
@@ -40,6 +41,7 @@
 				print list1     # Gibt aus: [5, 61, 6]
 				list1.pop(1)    # Löscht Wert an Position 1 der List
 				print list1     # Gibt aus: [5, 6]
+				
 				</pre>
 				
 				<h2>Logik</h2>
@@ -50,6 +52,7 @@
 				print a > b     # Ausgabe ist: False
 				if a != b:      # Wenn a ungleich b, dann...
 					print "ist ungleich!"
+					
 				</pre>
 				<p>Logik lässt sich mit den folgenden Operatoren durchführen: < (kleiner als), > (größer als), == (gleich), != (ungleich), <= (kleiner gleich), >= (größer gleich). Weiterhin gibt es die Möglichkeit, logische Ausdrücke zu verknüpfen.</p>
 				<pre name="code" class="py">
@@ -58,6 +61,7 @@
 				e = 10
 				if c > d and e > d:	   # Wenn c größer d ist und gleichzeitig e größer d ist dann...
 					print "beides ist größer als d!"
+					
 				</pre>
 				<p>Mit den folgenden Schlüsselworten lassen sich logische Ausdrücke verknüpfen: <b>and</b> (beide Bedingungen müssen wahr sein), <b>or</b> (eine der Bedingungen muss wahr sein</b>, <b>not</b> (kehrt den Wahrheitswert eines Ausdruckes um).</p>
 				
@@ -87,7 +91,6 @@
                 Funktionen sind dazu da, Code, den man mehr als einmal braucht, einmal an eine Stelle im Programm zu schreiben. Sie können dann an einer anderen Stelle aufgerufen werden.
 
 				<pre name="code" class="py">
-
                     def print_lol():
                         print "lol"
                 </pre>
@@ -95,7 +98,6 @@
                 Damit man nun nicht überall im Programm 'print "lol"' schreiben muss, ruft man die Funktion einfach mit print_lol() auf.
 
                 <pre name="code" class="py">
-
                 def print_lol():
                     print "lol"
                 
@@ -110,7 +112,6 @@
                 Wenn jetzt in einer Funktion etwas Anderes getan werden soll als lol auszugeben, zum Beispiel eine Rechnung durchzufüren oder einen beliebigen Text auszugeben macht man dies so:
 
                 <pre name="code" class="py">
-
 					def addiere(a, b):
 						print (a + b)
 
@@ -140,6 +141,7 @@
 							self.Gehalt = Gehalt
 							self.Name = Name
 							self.Alter = Alter
+							
                 </pre>
                 Dies ist sozusagen die Definition, wie ein Mitarbeiter aufgebaut ist. Die __init__() Funktion wird aufgerufen, wenn ein Objekt
                 erstellt wird. Man spricht auch von Instanzieren des Objekts. Die Variablen in den Klammern werden der Funktion übergeben.
@@ -196,7 +198,6 @@
                  weil mann dann sehr leicht durcheinander kommt. Ein Beispiel
                 
                 <pre name="code" class="py">
-                
 					class Mitarbeiter:
 						def __init__(self, a):
 							self.a = Name
@@ -249,7 +250,9 @@ while running:
     pygame.display.flip()
 
 # Das Programm beenden
-pygame.quit()</pre>
+pygame.quit()
+
+</pre>
 				<h2>Ereignisse</h2>
 				<h2>Grafiken und Zeichnen</h2>
 
