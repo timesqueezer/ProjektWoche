@@ -17,35 +17,35 @@ class Ball(object):
 	def move(self):
 		self.BallRect.move_ip(self.Speed)
 
-		if self.BallRect.left < 0 or self.BallRect.right > 1280:
+		if self.BallRect.left < 0 or self.BallRect.right > width:
 			self.Speed[0] = -self.Speed[0]
-		if self.BallRect.top < 0 or self.BallRect.bottom > 800:
+		if self.BallRect.top < 0 or self.BallRect.bottom > height:
 			self.Speed[1] = -self.Speed[1]
 
-		for ball in balls:
-			if (ball != self) or self.BallRect.colliderect(ball.BallRect):
-
-				if self.Speed[0] > 0:
-					self.BallRect.right = ball.BallRect.left
-
-				elif self.Speed[0] < 0:
-					self.BallRect.left = ball.BallRect.right
-
-				if self.Speed[1] > 0:
-					self.BallRect.bottom = ball.BallRect.top
-
-				elif self.Speed[1] < 0:
-					self.BallRect.top = ball.BallRect.bottom
+#		for ball in balls:
+#			if (ball != self) or self.BallRect.colliderect(ball.BallRect):
+#
+#				if self.Speed[0] > 0:
+#					self.BallRect.right = ball.BallRect.left
+#
+#				elif self.Speed[0] < 0:
+#					self.BallRect.left = ball.BallRect.right
+#
+#				if self.Speed[1] > 0:
+#					self.BallRect.bottom = ball.BallRect.top
+#
+#				elif self.Speed[1] < 0:
+#					self.BallRect.top = ball.BallRect.bottom
 
 
 
 pygame.init();
 
-size = width, height = 1280, 800
+size = width, height = 1440, 900
 
 speed = [2, 2]
 
-screen = pygame.display.set_mode(size)
+screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
 
 balls = []
 
@@ -55,6 +55,10 @@ for x in xrange(2):
 while True:
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT: sys.exit()
+
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_ESCAPE:
+				sys.exit()
 
 	for ball in balls:
 		ball.move()
