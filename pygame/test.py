@@ -8,7 +8,7 @@ class Ball(object):
 	def __init__(self, resource, pos):
 		self.Image = pygame.image.load(resource)
 		self.BallRect = self.Image.get_rect()
-		self.Speed = [random.randint(1,2), random.randint(1,2)]
+		self.Speed = [random.randint(1,100), random.randint(1,100)]
 		self.BallRect.move_ip(pos[0], pos[1])
 
 	def draw(self, screen):
@@ -22,22 +22,6 @@ class Ball(object):
 		if self.BallRect.top < 0 or self.BallRect.bottom > height:
 			self.Speed[1] = -self.Speed[1]
 
-#		for ball in balls:
-#			if (ball != self) or self.BallRect.colliderect(ball.BallRect):
-#
-#				if self.Speed[0] > 0:
-#					self.BallRect.right = ball.BallRect.left
-#
-#				elif self.Speed[0] < 0:
-#					self.BallRect.left = ball.BallRect.right
-#
-#				if self.Speed[1] > 0:
-#					self.BallRect.bottom = ball.BallRect.top
-#
-#				elif self.Speed[1] < 0:
-#					self.BallRect.top = ball.BallRect.bottom
-
-
 
 pygame.init();
 
@@ -49,7 +33,7 @@ screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
 
 balls = []
 
-for x in xrange(2):
+for x in xrange(1000):
 	balls.append(Ball("ball.png", [x*200, x*100]))
 
 while True:
